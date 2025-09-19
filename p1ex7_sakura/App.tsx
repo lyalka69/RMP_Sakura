@@ -20,7 +20,7 @@ const Flex = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    aspectRatio: 2,
     padding: 20,
   },
 });
