@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, Text, View, StyleSheet, ScrollView } from 'react-native';
+import { Pressable, Text, View, StyleSheet } from 'react-native';
 
 type FrogProps = {
   num: number;
@@ -49,7 +49,6 @@ const Lake = () => {
   }
 
   // Формирование списка кнопок в цикле
-  // ИСПРАВЛЕНИЕ: заменяем JSX.Element на React.ReactElement
   let i = 2;
   let pressButtons: React.ReactElement = (
     <PressButton num={1} pressHandler={setExNumber} isActive={exNumber === 1} />
@@ -79,9 +78,7 @@ const Lake = () => {
         <Frog num={3} color="#6bcf7f" />
       </View>
 
-      <ScrollView horizontal style={styles.buttonsScroll} showsHorizontalScrollIndicator={false}>
-        <View style={styles.buttons}>{pressButtons}</View>
-      </ScrollView>
+      <View style={styles.buttons}>{pressButtons}</View>
 
       <Text style={styles.info}>Текущая задача = {exNumber}</Text>
     </View>
@@ -102,8 +99,8 @@ const styles = StyleSheet.create({
     color: '#2c3e50',
   },
   lake: {
+    flex: 1,
     backgroundColor: '#a8dadc',
-    height: 300,
     borderRadius: 12,
     padding: 15,
     marginBottom: 20,
@@ -124,14 +121,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
   },
-  buttonsScroll: {
-    maxHeight: 60,
-    marginBottom: 15,
-  },
   buttons: {
+    flexWrap: 'wrap',
     flexDirection: 'row',
     gap: 10,
     paddingVertical: 5,
+    marginBottom: 15,
   },
   button: {
     width: 45,
